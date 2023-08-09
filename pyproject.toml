@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "newspaper-checker"
+version = "0.1.0"
+description = ""
+authors = ["denisb0 <denisb42@gmail.com>"]
+readme = "README.md"
+packages = [{include = "newspaper_checker"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+install = "^1.3.5"
+google-cloud-storage = "^2.10.0"
+python-dotenv = "^1.0.0"
+newspaper3k = {git = "ssh://github.com/dailydotdev/newspaper.git", rev = "b75385a"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
