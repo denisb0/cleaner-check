@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import logging
 import sys
-from scraper.scraper import clean_content, valid_article, article_to_content
+from scraper.scraper import clean_content, article_to_content, download_and_clean
 import argparse
 import dataclasses
 
@@ -20,11 +20,18 @@ def main():
 
     parser = argparse.ArgumentParser(description='newspaper checker')
     parser.add_argument('--obj', type=str,
-                        help='gcs object id', required=True)
+                        help='gcs object id', required=False)
     parser.add_argument('--file', type=str,
                         help='file with list of objects (not implemented)')
+    parser.add_argument('--url', type=str,
+                        help='url to check')
 
     args = parser.parse_args()
+
+    if args.url is not None:
+        article = download_and_clean(args.url)
+        print(article.title)
+        return
 
     object_name = args.obj  # "003503d1-e865-59d3-8607-9f99528d1740.html"
 

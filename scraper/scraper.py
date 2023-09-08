@@ -42,6 +42,12 @@ def valid_article(article):
     return True, ''
 
 
+def download_and_clean(url):
+    article = Article(url=url)
+    article.download()
+    article.parse()
+    return article
+
 def clean_content(data):
     config = Config()
     config.follow_meta_refresh = False
