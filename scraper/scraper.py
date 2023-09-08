@@ -48,6 +48,7 @@ def download_and_clean(url):
     article.parse()
     return article
 
+
 def clean_content(data):
     config = Config()
     config.follow_meta_refresh = False
